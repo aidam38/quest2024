@@ -1,0 +1,21 @@
+{% set clue_size = "1.5em" %}
+{% if location.clue|length > 30 %}
+  {% set clue_size = "1.4em" %}
+{% endif %}
+{% if location.clue|length > 60 %}
+  {% set clue_size = "0.9em" %}
+{% endif %}
+
+
+<form class="location" id="location-{{location.id}}" hx-post="{{base_url}}/submit-code" hx-swap="outerHTML" hx-swap-oob="{{oob}}">
+  <h2 style="font-size: {{clue_size}};">{% autoescape false %}{{location.clue}}{% endautoescape %}</h2>
+  <div>
+    <input type="hidden" name="id" value="{{location.id}}" />
+    <input id="input-{{location.id}}" type="text" name="code" onChange="localStorage.setItem('input-{{location.id}}', this.value);"/>
+    <input type="submit" value="Submit" />
+    {% if incorrect %}
+    <p class="incorrect">Incorrect!</p>
+    {% endif %}
+  </div>
+</form>
+<script>document.getElementById("input-{{location.id}}").value = localStorage.getItem("input-{{location.id}}")</script>

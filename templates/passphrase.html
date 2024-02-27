@@ -1,0 +1,15 @@
+{% extends "base.html" %}
+
+{% block content %}
+  <h1>Quest 2024</h1>
+  <div class="passphrase">
+    <p>Enter passphrase to join Quest 2024.</p>
+    <form hx-post="{{base_url}}/check-passphrase" hx-target="body" hx-swap="innerHTML">
+	    <input type="password" name="passphrase" />
+	    <input type="submit" value="Enter" />
+    </form>
+    {% if incorrect %}
+    <p class="incorrect">Incorrect!</p>
+    {% endif %}
+  </div>
+{% endblock %}

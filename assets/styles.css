@@ -1,0 +1,186 @@
+/* FONTS */
+@font-face {
+	font-family: "CaveatBrush";
+	src: url(/assets/CaveatBrush-Regular.ttf) format("truetype");
+}
+
+@font-face {
+	font-family: "Oswald";
+	src: url(/assets/Oswald-VariableFont_wght.ttf) format("truetype");
+}
+
+/* CONTAINER */
+body {
+	font-family: "Oswald";
+	max-width: 1024px;
+	margin: 0 auto;
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+	padding: 10px;
+}
+
+/* MAIN TITLE */
+h1 {
+	text-align: center;
+	font-size: 3em;
+	margin-bottom: 6px;
+}
+
+/* INPUT/FORM */
+input[type="submit"] {
+	padding: 5px 10px;
+	cursor: pointer;
+	background-color: rgb(243, 243, 243);
+	border: 2px solid rgb(220, 220, 220);
+	border-radius: 2px;
+	color: black;
+}
+
+input[type="submit"]:hover {
+	background-color: rgb(230, 230, 230);
+	border: 2px solid rgb(220, 220, 220);
+	color: black;
+}
+
+input {
+	padding: 5px 10px;
+}
+
+/* PASSPHRASE */
+.passphrase {
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+}
+
+/* LOG-IN */
+.log-in .comment {
+	font-size: 0.8em;
+	padding: 0;
+	margin: 0;
+	margin-bottom: 12px;
+}
+
+.log-in input {
+	display: block;
+}
+
+/* LOCATIONS */
+.locations {
+	width: 100%;
+}
+
+.locations > * + * {
+	margin-top: 10px;
+}
+
+.level {
+	width: auto;
+}
+
+.level>h3 {
+	font-size: 2.5em;
+	cursor: pointer;
+	margin: 0;
+	display: flex;
+	align-items: center;
+	user-select: none;
+}
+
+.level>h3>svg {
+	display: inline;
+	height: 2.2rem;
+	margin-right: 5px;
+}
+
+.level>div {
+	position: relative;
+	width: auto;
+	height: 100%;
+	border: 2px solid black;
+	border-radius: 5px;
+	display: flex;
+	flex-wrap: wrap;
+	justify-content: space-around;
+	padding: 10px;
+}
+
+.level>div>img {
+	position: absolute;
+	top: 0;
+	left: 50%;
+	transform: translateX(-50%);
+	width: 100%;
+	height: 100%;
+	object-fit: cover;
+	z-index: -1;
+}
+
+.found>h2 {
+	margin: 0;
+}
+.found>p {
+	margin: 0;
+	font-size: 0.8em;
+	text-align: center;
+	color: rgb(60, 60, 60);
+}
+.incorrect {
+	font-size: 1em;
+	color: rgb(60, 60, 60);
+}
+
+.level>div {
+    background-repeat: repeat-y;
+    background-size: contain; /* This ensures the image fits within the container */
+    background-position: center; /* Center the background image */
+}
+
+.level-1>div {
+    background-image: url(/assets/bg1.jpeg);
+}
+.level-2>div {
+    background-image: url(/assets/bg2.jpeg);
+}
+.level-3>div {
+    background-image: url(/assets/bg3.jpeg);
+	background-size: 100%;
+}
+.level-4>div {
+    background-color: gray;
+}
+/* background black */
+.level-5>div {
+	background-color: black;
+}
+
+
+/* LOCATION CARD */
+.location {
+	background-color: white;
+	display: flex;
+	flex-direction: column;
+	justify-content: space-around;
+	align-items: center;
+	width: 300px;
+	height: 150px;
+	border: 2px solid black;
+	border-radius: 5px;
+	margin: 10px;
+}
+
+.location>h2 {
+	margin: 0;
+	text-align: center;
+}
+
+.leaderboard>.entry {
+	display: flex;
+}
+.leaderboard>.header {
+	font-weight: bold;
+}
+.leaderboard>.entry>.user {
+	width: 120px;
+}

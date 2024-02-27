@@ -1,0 +1,7 @@
+<form id="location-{{location.id}}" class="location found" >
+  <h2>{{location.name}}</h2>
+  {% if location.name != location.clue %}
+    <p>{{location.clue}}</p>
+  {% endif %}
+  done
+</form>

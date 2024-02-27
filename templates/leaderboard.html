@@ -1,0 +1,19 @@
+{% extends "base.html" %}
+
+{% block content %}
+<h1>Leaderboard</h1>
+<a href="{{base_url}}/">back</a>
+<div style="height: 15px"></div>
+<div class="leaderboard">
+	<div class="entry header">
+		<div class="user">username</div>
+		<div>#locations</div>
+	</div>
+	{% for user in leaderboard %}
+		<div class="entry">
+			<div class="user">{{user[0]}}</div>
+			<div>{{user[1]}}</div>
+		</div>
+	{% endfor %}
+</div>
+{% endblock %}

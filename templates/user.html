@@ -1,0 +1,20 @@
+{% extends "base.html" %}
+
+{% block content %}
+  <h1>Quest 2024</h1>
+  <h2>Account</h2>
+  <div class="log-in">
+    <p>This will create an account if you don't have one yet.</p>
+    <form hx-post="{{base_url}}/log-in" hx-target="body" hx-swap="innerHTML">
+	    <input type="text" name="username" placeholder="username"/>
+	    <input type="password" name="password" placeholder="password"/>
+	    <input type="submit" value="Log in" />
+    </form>
+    {% if incorrect %}
+    <p class="incorrect">Password incorrect / This username already exists!</p>
+    {% endif %}
+    {% if empty %}
+    <p class="incorrect">Username and password must be non-empty!</p>
+    {% endif %}
+  </div>
+{% endblock %}

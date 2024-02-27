@@ -1,0 +1,51 @@
+{% extends "base.html" %}
+
+
+{% macro level(n) %}
+{% set found_count = namespace(value=0)%}
+{% for location in locations[n] %}
+	{% if location.found %}
+		{% set found_count.value = found_count.value + 1 %}
+	{% endif %}
+{% endfor %}
+<div class="level level-{{n}}">
+	<h3 onclick="toggleLevel({{n}});">
+		{% include 'icons/chevron-down.html' %} level {{n}} (<span id="level-{{n}}-count">{{ found_count.value }}</span>/{{locations[n]|length}})
+	</h3>
+	<div>
+		<!-- <img src="{{base_url}}/assets/bg{{n}}.jpeg"> -->
+		{% for location in locations[n] %} 
+			{% if location.found %} 
+				{% include 'location_card_found.html' %}
+			{% elif location.unlocked %} 
+				{% include 'location_card.html' %} 
+			{% else %} 
+				{% include 'location_card_locked.html' %}
+			{% endif %} 
+		{% endfor %}
+	</div>
+</div>
+{% endmacro %}
+
+{% block content %}
+<script>
+	function toggleLevel(n) {
+		const div = document.querySelector('.level-' + n + '>div');
+		const show = div.style.display == 'none';
+		div.style.display = show ? 'flex' : 'none';
+		
+		const svg = document.querySelector('.level-' + n + '>h3>svg');
+		svg.outerHTML = show ? `{% include 'icons/chevron-down.html' %}` : `{% include 'icons/chevron-right.html' %}`;
+	}
+</script>
+<h1>Quest 2024</h1>
+<span>logged in as {{username}}</span>
+<a href="{{base_url}}/leaderboard">leaderboard</a>
+<div style="height: 15px"></div>
+<div class="locations">
+	{{ level(1) }}
+	{{ level(2) }}
+	{{ level(3) }}
+	{{ level(4) }}
+	{{ level(5) }}
+{% endblock %}
